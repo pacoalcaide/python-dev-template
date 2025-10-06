@@ -81,7 +81,7 @@ The template was created to enable seamless customization and modification of th
                 "quarto.quarto",
                 "redhat.vscode-yaml",
                 "ms-toolsai.jupyter",
-                "streetsidesoftware.code-spell-checker",
+                //"streetsidesoftware.code-spell-checker",
                 "tamasfe.even-better-toml",
                 "aaron-bond.better-comments",
                 //Code
