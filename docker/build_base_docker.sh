@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # Image settings
-user_name=rkrispin
+user_name=pacoalcaide
 image_label=python-base
 tag=0.0.1
 quarto_ver="1.8.24"
 dockerfile="Dockerfile_Base"
 
-image_name="rkrispin/$image_label:$tag"
+image_name="$user_name/$image_label:$tag"
 
-echo "Build the docker"
+echo "Construir la imagen docker"
 
 docker buildx build  . -f $dockerfile \
                 --platform linux/amd64,linux/arm64 \
@@ -18,8 +18,8 @@ docker buildx build  . -f $dockerfile \
                 -t $image_name
 
 if [[ $? = 0 ]] ; then
-echo "Pushing docker..."
+echo "Subiendo imagen docker..."
 docker push $image_name
 else
-echo "Docker build failed"
+echo "Fallo en la construcción de la imagen Docker"
 fi

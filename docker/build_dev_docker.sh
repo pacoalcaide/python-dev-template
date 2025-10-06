@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Image settings
-user_name=rkrispin
+user_name=pacoalcaide
 project_name="template"
 image_label=python-dev-$project_name
 tag=0.0.1
@@ -9,13 +9,11 @@ python_ver=3.11
 venv_name="python-$python_ver-dev"
 ruff_ver="0.12.0"
 dockerfile="Dockerfile_Dev"
-image_name="rkrispin/$image_label:$tag"
+image_name="$user_name/$image_label:$tag"
 
+echo "Construyendo imagen docker"
 
-
-echo "Build the docker"
-
-docker buildx build  . -f $dockerfile \
+docker buildx build . -f $dockerfile \
                 --platform linux/amd64,linux/arm64 \
                 --progress=plain \
                 --build-arg VENV_NAME=$venv_name \
@@ -24,8 +22,8 @@ docker buildx build  . -f $dockerfile \
                 -t $image_name
 
 if [[ $? = 0 ]] ; then
-echo "Pushing docker..."
-docker push $image_name
+    echo "Subiendo imagen docker..."
+    docker push $image_name
 else
-echo "Docker build failed"
+    echo "Fallo construyendo imagen Docker"
 fi
