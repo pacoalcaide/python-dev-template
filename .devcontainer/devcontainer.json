@@ -1,9 +1,11 @@
 {
     "name": "python-dev",
-    "image": "docker.io/rkrispin/python-dev-template:0.0.1",
+    "image": "docker.io/pacoalcaide/python-dev-template:0.0.1",
     "customizations": {
         "vscode": {
             "settings": {
+                "workbench.colorTheme": "Default High Contrast",
+                "workbench.editor.showTabs": "multiple",
                 "python.defaultInterpreterPath": "/opt/python-3.11-dev/bin/python3",
                 "python.selectInterpreter": "/opt/python-3.11-dev/bin/python3"
             },
@@ -40,10 +42,10 @@
             ]
         }
     },
-    // Optional, local zsh history:
-    "mounts": [
-        "source=${localEnv:HOME}/.zsh_history_dev,target=/root/.zsh_history,type=bind,consistency=cache"
-    ],
+    // Optional, local bash history:
+    //"mounts": [
+    //    "source=${localEnv:HOME}/.zsh_history_dev,target=/root/.zsh_history,type=bind,consistency=cache"
+    //],
     // Optional set environment variables:
     "remoteEnv": {
         "MY_VAR": "${localEnv:MY_VAR:test_var}"

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash -x
 QUARTO_VERSION=$1 
 
 echo "Installing Quarto version $QUARTO_VERSION"
@@ -12,10 +12,7 @@ else
   CPU="amd64"
 fi
 
-
-
-
-TEMP_QUARTO="$(mktemp)" && \
-    wget -q  -O "$TEMP_QUARTO" https://github.com/quarto-dev/quarto-cli/releases/download/v$QUARTO_VERSION/quarto-${QUARTO_VERSION}-linux-${CPU}.deb && \
-    dpkg -i "$TEMP_QUARTO" && \
-    rm -f "$TEMP_QUARTO"
+echo TEMP_QUARTO=$(mktemp) && \
+  echo wget -q  -O $TEMP_QUARTO https://github.com/quarto-dev/quarto-cli/releases/download/v$QUARTO_VERSION/quarto-${QUARTO_VERSION}-linux-${CPU}.deb && \
+  echo dpkg -i $TEMP_QUARTO && \
+  echo rm -f $TEMP_QUARTO

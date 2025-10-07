@@ -1,15 +1,19 @@
 FROM ubuntu:24.04 
 
 # Arguments
-ARG QUARTO_VER="1.7.32"
+ARG QUARTO_VER
+ARG USER_NAME
+ARG USER_EMAIL
 
 # Environment variables
-ENV QUARTO_VER=$QUARTO_VER
+#ENV QUARTO_VER=$QUARTO_VER
 
 # Copy files
 RUN mkdir settings
 COPY install_quarto.sh install_dependencies.sh setting_git.sh settings/
-# Install dependencies and set zsh
+# Install dependencies and set bash as default shell
 RUN bash ./settings/install_dependencies.sh
 # Install Quarto
-RUN bash ./settings/install_quarto.sh $QUARTO_VER
+#RUN bash ./settings/install_quarto.sh $QUARTO_VER
+# Set git settings
+RUN bash ./settings/setting_git.sh $USER_NAME $USER_EMAIL

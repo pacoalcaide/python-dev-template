@@ -6,21 +6,23 @@ apt-get update && apt-get install -y --no-install-recommends \
    vim \
    wget \
    curl \
-   #zsh \
    git \
    openssh-server \
    jq \
-   ruby-full \
    build-essential \
    apt-utils \
    locales \
-   #fzf \
    btop \
    bat \
    unzip \
-   fontconfig \
    software-properties-common \
    && rm -rf /var/lib/apt/lists/*
+
+   #zsh \
+   #ruby-full \
+   #fzf \
+   #fontconfig \
+   
 
 # Installing oh my zsh
 #sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch
