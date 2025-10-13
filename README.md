@@ -19,22 +19,25 @@ See also:
 - [Setting up an R Development  Environment with VScode and Docker](https://github.com/RamiKrispin/vscode-r)
 - [Running Python/R with Docker vs. Virtual Environment](https://medium.com/@rami.krispin/running-python-r-with-docker-vs-virtual-environment-4a62ed36900f)
 
-
 ## General Requirements
+
 To use this template out of the box, you will need on your local machine the following settings:
+
 - VScode
 - The Dev Containers extension
 - Docker and Docker Desktop (or equivalent)
 - Docker Hub account
 
 A step-by-step guide for setting the above prerequisites is available here:
+
 https://github.com/RamiKrispin/vscode-python/tree/main#prerequisites
 
 ## Clone the Template
 
-It is straightforward to use this template and clone it to a different account. Click the `Use this template` green button on the top right and select the `Create a new repository` option. The steps from there are similar for creating a new repository on your account. At the end of this process, it generates a new repository with the template. 
+It is straightforward to use this template and clone it to a different account. Click the `Use this template` green button on the top right and select the `Create a new repository` option. The steps from there are similar for creating a new repository on your account. At the end of this process, it generates a new repository with the template.
 
 Once you have the repository set locally, you can update and modify the image setting according to your requirements using the following steps:
+
 - Update the required Python libraries under the `docker/requirements.txt` file.
 - Update the image settings (e.g., label, versions, etc.) in the `docker/build_dev_docker.sh` file
 - Execute the `docker/build_dev_docker.sh` file to build the project image
@@ -43,6 +46,7 @@ Once you have the repository set locally, you can update and modify the image se
 ## Image Settings
 
 For efficiency reasons, the template image is split into two builds:
+
 - [Base image](https://hub.docker.com/repository/docker/pacoalcaide/python-base/general) - the core dependencies (Quarto, Debian dependencies, CLI tools, etc.)
 - [Dev image](https://hub.docker.com/repository/docker/pacoalcaide/python-dev-template/general) - built on top of the base image, adding the Python virtual environment
 Generally, when starting a new project, you should only update and rebuild the Dev image. This reduces the image's build from a few minutes to a few seconds.

@@ -9,5 +9,6 @@ venv.bak/
 
 # y mi info de pruebas, desarrollo, etc.
 tmp/
+old/
 .env.*
 !.env.ejemplo

@@ -10,9 +10,10 @@ fi
 # Construyendo imagen
 echo "Construyendo imagen docker"
 
-echo docker buildx build . -f $DOCKERFILE_DEV_NAME \
+docker buildx build . -f $DOCKERFILE_DEV_NAME \
                 --platform linux/amd64,linux/arm64 \
                 --progress=plain \
+                --build-arg IMG_BASE_NAME=$IMAGE_BASE_NAME \
                 --build-arg VENV_NAME=$VENV_NAME \
                 --build-arg PYTHON_VER=$PYTHON_VERSION \
                 --build-arg RUFF_VER=$RUFF_VERSION \

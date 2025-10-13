@@ -1,13 +1,17 @@
 {
     "name": "python-dev",
-    "image": "docker.io/pacoalcaide/python-dev-template:0.0.1",
+    //"image": "docker.io/pacoalcaide/python-dev-template:0.0.1",
+    //"image": "pacoalcaide/python-dev_vscode-python-uv-template:0.0.1",
+    "image": "${localEnv:IMAGE_DEV_NAME}",
     "customizations": {
         "vscode": {
             "settings": {
                 "workbench.colorTheme": "Default High Contrast",
                 "workbench.editor.showTabs": "multiple",
-                "python.defaultInterpreterPath": "/opt/python-3.11-dev/bin/python3",
-                "python.selectInterpreter": "/opt/python-3.11-dev/bin/python3"
+                //"python.defaultInterpreterPath": "/opt/python-3.12-dev/bin/python3",
+                //"python.selectInterpreter": "/opt/python-3.12-dev/bin/python3"
+                "python.defaultInterpreterPath": "/opt/python-${localEnv:PYTHON_VERSION}-dev/bin/python3",
+                "python.selectInterpreter": "/opt/python-${localEnv:PYTHON_VERSION}-dev/bin/python3"
             },
             "extensions": [
                 // Container
