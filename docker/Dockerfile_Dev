@@ -8,5 +8,6 @@ ARG PYTHON_VER
 ARG RUFF_VER
 
 # Set Python environment
-COPY install_uv.sh requirements.txt settings/
-RUN echo bash ./settings/install_uv.sh $VENV_NAME $PYTHON_VER $RUFF_VER
+RUN mkdir -p settings/dev
+COPY settings/dev/* settings/dev/
+RUN bash ./settings/dev/install_uv.sh $VENV_NAME $PYTHON_VER $RUFF_VER

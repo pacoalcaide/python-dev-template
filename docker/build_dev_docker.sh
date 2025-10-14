@@ -8,16 +8,25 @@ if [ -f .env ]; then
 fi
 
 # Construyendo imagen
-echo "Construyendo imagen docker"
+echo "Construyendo imagen docker para desarrollo"
 
 docker buildx build . -f $DOCKERFILE_DEV_NAME \
-                --platform linux/amd64,linux/arm64 \
                 --progress=plain \
                 --build-arg IMG_BASE_NAME=$IMAGE_BASE_NAME \
                 --build-arg VENV_NAME=$VENV_NAME \
                 --build-arg PYTHON_VER=$PYTHON_VERSION \
                 --build-arg RUFF_VER=$RUFF_VERSION \
                 -t $IMAGE_DEV_NAME
+
+#docker buildx build . -f $DOCKERFILE_DEV_NAME \
+#                --platform linux/amd64,linux/arm64 \
+#                --no-cache \
+#                --progress=plain \
+#                --build-arg IMG_BASE_NAME=$IMAGE_BASE_NAME \
+#                --build-arg VENV_NAME=$VENV_NAME \
+#                --build-arg PYTHON_VER=$PYTHON_VERSION \
+#                --build-arg RUFF_VER=$RUFF_VERSION \
+#                -t $IMAGE_DEV_NAME
 
 if [[ $? = 0 ]] ; then
     echo "Subiendo imagen docker..."

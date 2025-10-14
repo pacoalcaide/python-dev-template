@@ -19,12 +19,13 @@ docker buildx build . -f $DOCKERFILE_BASE_NAME \
                 -t $IMAGE_BASE_NAME
 
 #docker buildx build . -f $DOCKERFILE_BASE_NAME \
+#                --platform linux/amd64,linux/arm64 \
+#                --no-cache \
 #                --progress=plain \
 #                --build-arg IMG_ORG=$IMAGE_ORIGEN \
 #                --build-arg QUARTO_VER=$QUARTO_VERSION \
 #                --build-arg USER_NAME=$USER_NAME \
 #                --build-arg USER_EMAIL=$USER_EMAIL \
-#                --no-cache \
 #                -t $IMAGE_BASE_NAME
 
 if [[ $? = 0 ]] ; then

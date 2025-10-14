@@ -17,4 +17,4 @@ uv venv /opt/$VENV_NAME --python $PYTHON_VER \
 
 source /opt/$VENV_NAME/bin/activate
 
-uv pip install  --no-cache-dir -r ./settings/requirements.txt
+uv pip install --native-tls --no-cache-dir -r ./settings/dev/requirements.txt

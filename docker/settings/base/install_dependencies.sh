@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 # Install dependecies
-apt-get update && apt-get install -y --no-install-recommends \
+echo "Instalando dependencias..."
+apt-get update -qq && apt-get install -qq -y --no-install-recommends \
    python3-launchpadlib \
    vim \
    wget \
@@ -22,7 +23,6 @@ apt-get update && apt-get install -y --no-install-recommends \
    #ruby-full \
    #fzf \
    #fontconfig \
-   
 
 # Installing oh my zsh
 #sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch
