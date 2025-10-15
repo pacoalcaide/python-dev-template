@@ -8,15 +8,6 @@
     "service": "dev",
     "workspaceFolder": "/workspace",
 
-    // ESTA ES LA CLAVE: Dice a la extensión dónde buscar archivos .env antes de ejecutar Compose
-    // (Esto resuelve los problemas de anidamiento de .env)
-    //"dockerComposeFile.envPaths": [
-    //    "../.env" 
-    //],
-
-    //"runArgs": [
-    //    "--env-file", "${localWorkspaceFolder}/.env"
-    //],
     "customizations": {
         "vscode": {
             "settings": {
