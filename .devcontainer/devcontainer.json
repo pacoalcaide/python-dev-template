@@ -1,17 +1,38 @@
 {
     "name": "python-dev",
     //"image": "docker.io/pacoalcaide/python-dev-template:0.0.1",
-    //"image": "pacoalcaide/python-dev_vscode-python-uv-template:0.0.1",
-    "image": "${localEnv:IMAGE_DEV_NAME}",
+    "image": "pacoalcaide/python-dev_vscode-python-uv-template:0.0.1",
+    //"image": "${localEnv:IMAGE_DEV_NAME}",
+    // Optional, local bash history:
+    //"mounts": [
+    //    "source=${localEnv:HOME}/.zsh_history_dev,target=/root/.zsh_history,type=bind,consistency=cache"
+    //],
+    // Optional set environment variables:
+    "remoteEnv": {
+        "PYTHON_INTERPRETER": "/opt/${localEnv:VENV_NAME}/bin/python3",
+        // Variable estándar de cURL/wget (muy usada)
+        "SSL_CERT_FILE": "/etc/ssl/certs/ca-certificates.crt", 
+        // Variable usada por Node.js/NPM (a menudo utilizada por el entorno VS Code)
+        "NODE_EXTRA_CA_CERTS": "/etc/ssl/certs/ca-certificates.crt" 
+        //"MY_VAR": "${localEnv:MY_VAR:test_var}"
+    },
+    // Optional load environment variables from a file:
+    "runArgs": [
+        "--env-file",
+        ".devcontainer/devcontainer.env"
+    ],
     "customizations": {
+        // Añade la configuración de Docker (si usas la CLI) o Dev Containers
+        // Esto depende de tu setup, pero a veces ayuda con la interpolación:
+        //"docker": {
+        //    "image": "${localEnv:IMAGE_DEV_NAME}" 
+        //},
         "vscode": {
             "settings": {
                 "workbench.colorTheme": "Default High Contrast",
                 "workbench.editor.showTabs": "multiple",
-                //"python.defaultInterpreterPath": "/opt/python-3.12-dev/bin/python3",
-                //"python.selectInterpreter": "/opt/python-3.12-dev/bin/python3"
-                "python.defaultInterpreterPath": "/opt/python-${localEnv:PYTHON_VERSION}-dev/bin/python3",
-                "python.selectInterpreter": "/opt/python-${localEnv:PYTHON_VERSION}-dev/bin/python3"
+                "python.defaultInterpreterPath": "${containerEnv:PYTHON_INTERPRETER}",
+                "python.selectInterpreter": "${containerEnv:PYTHON_INTERPRETER}"
             },
             "extensions": [
                 // Container
@@ -39,24 +60,10 @@
                 // Git
                 "mhutchie.git-graph",
                 // Misc
-                "streetsidesoftware.code-spell-checker",
+                "streetsidesoftware.code-spell-checker"
                 // Code
-                "continue.continue"
-
+                //"continue.continue"
             ]
         }
-    },
-    // Optional, local bash history:
-    //"mounts": [
-    //    "source=${localEnv:HOME}/.zsh_history_dev,target=/root/.zsh_history,type=bind,consistency=cache"
-    //],
-    // Optional set environment variables:
-    "remoteEnv": {
-        "MY_VAR": "${localEnv:MY_VAR:test_var}"
-    },
-    // Optional load environment variables from a file:
-    "runArgs": [
-        "--env-file",
-        ".devcontainer/devcontainer.env"
-    ]
+    }
 }

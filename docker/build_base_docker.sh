@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Cargar variables de entorno desde un archivo .env si existe
-if [ -f .env ]; then
+if [ -f ../.env ]; then
     set -a  # auto-export todas las variables
-    source .env
+    source ../.env
     set +a
 fi
 
