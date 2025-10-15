@@ -1,25 +1,36 @@
 #!/bin/bash
 
-# Image settings
-user_name=rkrispin
-image_label=python-base
-tag=0.0.1
-quarto_ver="1.8.24"
-dockerfile="Dockerfile_Base"
+# Cargar variables de entorno desde un archivo .env si existe
+if [ -f ../.env ]; then
+    set -a  # auto-export todas las variables
+    source ../.env
+    set +a
+fi
 
-image_name="rkrispin/$image_label:$tag"
+# Construyendo imagen
+echo "Construir la imagen docker"
 
-echo "Build the docker"
-
-docker buildx build  . -f $dockerfile \
-                --platform linux/amd64,linux/arm64 \
+docker buildx build . -f $DOCKERFILE_BASE_NAME \
                 --progress=plain \
-                --build-arg QUARTO_VER=$quarto_ver \
-                -t $image_name
+                --build-arg IMG_ORG=$IMAGE_ORIGEN \
+                --build-arg QUARTO_VER=$QUARTO_VERSION \
+                --build-arg USER_NAME=$USER_NAME \
+                --build-arg USER_EMAIL=$USER_EMAIL \
+                -t $IMAGE_BASE_NAME
+
+#docker buildx build . -f $DOCKERFILE_BASE_NAME \
+#                --platform linux/amd64,linux/arm64 \
+#                --no-cache \
+#                --progress=plain \
+#                --build-arg IMG_ORG=$IMAGE_ORIGEN \
+#                --build-arg QUARTO_VER=$QUARTO_VERSION \
+#                --build-arg USER_NAME=$USER_NAME \
+#                --build-arg USER_EMAIL=$USER_EMAIL \
+#                -t $IMAGE_BASE_NAME
 
 if [[ $? = 0 ]] ; then
-echo "Pushing docker..."
-docker push $image_name
+    echo "Subiendo imagen docker..."
+    echo docker push $IMAGE_BASE_NAME
 else
-echo "Docker build failed"
+    echo "Fallo en la construcción de la imagen Docker"
 fi

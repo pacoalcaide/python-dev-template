@@ -1,31 +1,36 @@
 #!/bin/bash
 
-# Image settings
-user_name=rkrispin
-project_name="template"
-image_label=python-dev-$project_name
-tag=0.0.1
-python_ver=3.11
-venv_name="python-$python_ver-dev"
-ruff_ver="0.12.0"
-dockerfile="Dockerfile_Dev"
-image_name="rkrispin/$image_label:$tag"
+# Cargar variables de entorno desde un archivo .env si existe
+if [ -f ../.env ]; then
+    set -a  # auto-export todas las variables
+    source ../.env
+    set +a
+fi
 
+# Construyendo imagen
+echo "Construyendo imagen docker para desarrollo"
 
-
-echo "Build the docker"
-
-docker buildx build  . -f $dockerfile \
-                --platform linux/amd64,linux/arm64 \
+docker buildx build . -f $DOCKERFILE_DEV_NAME \
                 --progress=plain \
-                --build-arg VENV_NAME=$venv_name \
-                --build-arg PYTHON_VER=$python_ver \
-                --build-arg RUFF_VER=$ruff_ver \
-                -t $image_name
+                --build-arg IMG_BASE_NAME=$IMAGE_BASE_NAME \
+                --build-arg VENV_NAME=$VENV_NAME \
+                --build-arg PYTHON_VER=$PYTHON_VERSION \
+                --build-arg RUFF_VER=$RUFF_VERSION \
+                -t $IMAGE_DEV_NAME
+
+#docker buildx build . -f $DOCKERFILE_DEV_NAME \
+#                --platform linux/amd64,linux/arm64 \
+#                --no-cache \
+#                --progress=plain \
+#                --build-arg IMG_BASE_NAME=$IMAGE_BASE_NAME \
+#                --build-arg VENV_NAME=$VENV_NAME \
+#                --build-arg PYTHON_VER=$PYTHON_VERSION \
+#                --build-arg RUFF_VER=$RUFF_VERSION \
+#                -t $IMAGE_DEV_NAME
 
 if [[ $? = 0 ]] ; then
-echo "Pushing docker..."
-docker push $image_name
+    echo "Subiendo imagen docker..."
+    echo docker push $IMAGE_DEV_NAME
 else
-echo "Docker build failed"
+    echo "Fallo construyendo imagen Docker"
 fi

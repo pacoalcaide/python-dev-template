@@ -1,15 +1,16 @@
 # A Dockerized Python Development Environment Template
 
 This repository provides a template for a dockerized Python development environment with VScode and the Dev Containers extension. It uses [UV](https://docs.astral.sh/uv/) to set the Python virtual environment. This template includes the following features:
+
 - Python 3.11
-- Virtual environment 
+- Virtual environment
 - Dev Containers settings
-- Quarto 
+- Quarto
 - Ruff settings
 - Dockerfile
 - UV
 - zsh settings
-- CLI tools 
+- CLI tools
 
 See also:
 - [A tutorial for setting this template](https://medium.com/@rami.krispin/setting-a-dockerized-python-development-environment-template-de2400c4812b)
@@ -18,22 +19,25 @@ See also:
 - [Setting up an R Development  Environment with VScode and Docker](https://github.com/RamiKrispin/vscode-r)
 - [Running Python/R with Docker vs. Virtual Environment](https://medium.com/@rami.krispin/running-python-r-with-docker-vs-virtual-environment-4a62ed36900f)
 
-
 ## General Requirements
+
 To use this template out of the box, you will need on your local machine the following settings:
+
 - VScode
 - The Dev Containers extension
 - Docker and Docker Desktop (or equivalent)
 - Docker Hub account
 
 A step-by-step guide for setting the above prerequisites is available here:
+
 https://github.com/RamiKrispin/vscode-python/tree/main#prerequisites
 
 ## Clone the Template
 
-It is straightforward to use this template and clone it to a different account. Click the `Use this template` green button on the top right and select the `Create a new repository` option. The steps from there are similar for creating a new repository on your account. At the end of this process, it generates a new repository with the template. 
+It is straightforward to use this template and clone it to a different account. Click the `Use this template` green button on the top right and select the `Create a new repository` option. The steps from there are similar for creating a new repository on your account. At the end of this process, it generates a new repository with the template.
 
 Once you have the repository set locally, you can update and modify the image setting according to your requirements using the following steps:
+
 - Update the required Python libraries under the `docker/requirements.txt` file.
 - Update the image settings (e.g., label, versions, etc.) in the `docker/build_dev_docker.sh` file
 - Execute the `docker/build_dev_docker.sh` file to build the project image
@@ -42,8 +46,9 @@ Once you have the repository set locally, you can update and modify the image se
 ## Image Settings
 
 For efficiency reasons, the template image is split into two builds:
-- [Base image](https://hub.docker.com/repository/docker/rkrispin/python-base/general) - the core dependencies (Quarto, Debian dependencies, CLI tools, etc.) 
-- [Dev image](https://hub.docker.com/repository/docker/rkrispin/python-dev-template/general) - built on top of the base image, adding the Python virtual environment 
+
+- [Base image](https://hub.docker.com/repository/docker/pacoalcaide/python-base/general) - the core dependencies (Quarto, Debian dependencies, CLI tools, etc.)
+- [Dev image](https://hub.docker.com/repository/docker/pacoalcaide/python-dev-template/general) - built on top of the base image, adding the Python virtual environment
 Generally, when starting a new project, you should only update and rebuild the Dev image. This reduces the image's build from a few minutes to a few seconds.
 
 Both images are available for both `arm64` (Apple Silicon), and `amd64` (Intel) platforms.
@@ -59,10 +64,12 @@ The template was created to enable seamless customization and modification of th
 ```json
 {
     "name": "python-dev",
-    "image": "docker.io/rkrispin/python-dev-template:0.0.1",
+    "image": "docker.io/pacoalcaide/python-dev-template:0.0.1",
     "customizations": {
         "vscode": {
             "settings": {
+                "workbench.colorTheme": "Default High Contrast",
+                "workbench.editor.showTabs": "multiple",
                 "python.defaultInterpreterPath": "/opt/python-3.11-dev/bin/python3",
                 "python.selectInterpreter": "/opt/python-3.11-dev/bin/python3"
             },
@@ -81,7 +88,7 @@ The template was created to enable seamless customization and modification of th
                 "quarto.quarto",
                 "redhat.vscode-yaml",
                 "ms-toolsai.jupyter",
-                "streetsidesoftware.code-spell-checker",
+                //"streetsidesoftware.code-spell-checker",
                 "tamasfe.even-better-toml",
                 "aaron-bond.better-comments",
                 //Code
@@ -100,9 +107,9 @@ The template was created to enable seamless customization and modification of th
         }
     },
     // Optional, local zsh history:
-    "mounts": [
-        "source=${localEnv:HOME}/.zsh_history_dev,target=/root/.zsh_history,type=bind,consistency=cache"
-    ],
+    //"mounts": [
+    //    "source=${localEnv:HOME}/.zsh_history_dev,target=/root/.zsh_history,type=bind,consistency=cache"
+    //],
     // Optional set environment variables:
     "remoteEnv": {
         "MY_VAR": "${localEnv:MY_VAR:test_var}"
@@ -157,7 +164,7 @@ Note: to prevent the `.zsh_history` file from getting corrupted by writing simul
 
 ## Customization
 
-By default, this template is using  it uses this [image](https://hub.docker.com/repository/docker/rkrispin/python-dev/tags/arm64.0.0.1/sha256-8d157d1f3218c1f5f76889f739b7eacea5dfcf185e0860eefa016fac8474eacf), which was set as an example. The docker folder contains a Docker workflow template that enables you to set the following:
+By default, this template is using  it uses this [image](https://hub.docker.com/repository/docker/pacoalcaide/python-dev/tags/arm64.0.0.1/sha256-8d157d1f3218c1f5f76889f739b7eacea5dfcf185e0860eefa016fac8474eacf), which was set as an example. The docker folder contains a Docker workflow template that enables you to set the following:
 - Python version
 - Required libraries
 - Install Quarto and define version
