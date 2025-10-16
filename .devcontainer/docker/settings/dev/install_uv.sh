@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-VENV_NAME=$1
-PYTHON_VER=$2
+
+PYTHON_VER=$1
+VENV_NAME=$2
 RUFF_VER=$3
 
 # Install Ruff

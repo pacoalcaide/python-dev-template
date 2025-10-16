@@ -1,14 +1,11 @@
+# en el docker compose superior se define el valor por defecto para que nunca venga vacío
 ARG IMG_ORG
-FROM ${IMG_ORG:-ubuntu:24.04}
+FROM ${IMG_ORG}
 
 # Arguments
 ARG QUARTO_VER
 ARG USER_NAME
 ARG USER_EMAIL
-
-# "Copiando archivos de configuracion a la imagen ..."
-RUN mkdir -p settings/base
-COPY docker/settings/base/*.sh settings/base
 
 # "Copiando archivos de certificados a la imagen docker..."
 # necesario para que ciertas aplicaciones pueda acceder a repositorios https con certificados autofirmados
@@ -18,6 +15,10 @@ COPY docker/settings/base/*.sh settings/base
 # - PARECE que el comando "update-ca-certificates" se ejecuta al instalar el paquete "software-properties-common"
 # - en este caso, se ejecuta al final del "apt-get install" que se hace en la shell "install_dependencies.sh"
 COPY docker/settings/base/certificates/*.crt /usr/local/share/ca-certificates/
+
+# "Copiando archivos de configuracion a la imagen ..."
+RUN mkdir -p settings/base
+COPY docker/settings/base/*.sh settings/base
 
 # Install dependencies and set bash as default shell
 RUN bash ./settings/base/install_dependencies.sh

@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile_Base
       args:
-        - IMG_ORG=${IMAGE_ORIGEN}
+        - IMG_ORG=${IMAGE_ORIGEN:-ubuntu:24.04}
         - QUARTO_VER=${QUARTO_VERSION}
         - USER_NAME=${USER_NAME}
         - USER_EMAIL=${USER_EMAIL}
@@ -17,9 +17,9 @@ services:
       context: .
       dockerfile: docker/Dockerfile_Dev
       args:
-        - IMG_BASE_NAME=${IMAGE_BASE_NAME}
-        - VENV_NAME=${VENV_NAME}
+        - IMG_BASE_NAME=${IMAGE_BASE_NAME:-pacoalcaide/python-base_python-dev:0.0.1}
         - PYTHON_VER=${PYTHON_VERSION}
+        - VENV_NAME=${VENV_NAME}
         - RUFF_VER=${RUFF_VERSION}
     image: ${IMAGE_DEV_NAME}
     depends_on:
