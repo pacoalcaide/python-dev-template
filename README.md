@@ -1,33 +1,3 @@
-# Tareas pendientes
-
-## obligatorio
-
-- [x] quitar ZSH
-- [x] limpiar algunas "extensions" de vscode
-- [x] coger la info de ".env" para crear el docker de devcontainer
-  - [x] cargar desde .env la info en devcontainer.json
-  - [x] montar con docker-compose.yml
-  - [x] unificar en un solo dockerfile la creación de las 2 imágenes (base y dev)
-- [ ] probar a crear un proyecto nuevo desde la plantilla GitHub
-- [ ] limpiar comentarios y ficheros obsoletos
-- [ ] rehacer el README.md ¿usando IA?
-
-## importante
-
-- [ ] [ampliar y mejorar el uso de la extensión TODOs](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
-- [ ] no usar "root" en docker
-- [ ] poner "starship" en bash del docker
-- [ ] probar a subir la imagen resultante en el repositorio ... y usarla desde ahí 
-  - [ ] NEXUS (interno)
-  - [ ] DOCKERHUB
-  - [ ] GITHUB PACKAGES
-
-## algún día
-
-- [ ] [Colorls](https://github.com/athityakumar/colorls)
-- [ ] [fzf](https://github.com/junegunn/fzf)
-- [ ] [thefuck](https://github.com/nvbn/thefuck)
-
 # A Dockerized Python Development Environment Template
 
 This repository provides a template for a dockerized Python development environment with VScode and the Dev Containers extension. It uses [UV](https://docs.astral.sh/uv/) to set the Python virtual environment. This template includes the following features:
@@ -43,11 +13,42 @@ This repository provides a template for a dockerized Python development environm
 - CLI tools
 
 See also:
+
 - [A tutorial for setting this template](https://medium.com/@rami.krispin/setting-a-dockerized-python-development-environment-template-de2400c4812b)
 - [From Zero to a Dockerized Development Environment in Minutes with GitHub Repository Templates](https://theaiops.substack.com/p/from-zero-to-a-dockerized-development)
 - [Setting up a Python Development Environment with VScode and Docker](https://github.com/RamiKrispin/vscode-python)
 - [Setting up an R Development  Environment with VScode and Docker](https://github.com/RamiKrispin/vscode-r)
 - [Running Python/R with Docker vs. Virtual Environment](https://medium.com/@rami.krispin/running-python-r-with-docker-vs-virtual-environment-4a62ed36900f)
+
+## Tareas pendientes
+
+### obligatorio
+
+- [x] quitar ZSH
+- [x] limpiar algunas "extensions" de vscode
+- [x] coger la info de ".env" para crear el docker de devcontainer
+  - [x] cargar desde .env la info en devcontainer.json
+  - [x] montar con docker-compose.yml
+  - [x] unificar en un solo dockerfile la creación de las 2 imágenes (base y dev)
+- [ ] probar a crear un proyecto nuevo desde la plantilla GitHub
+- [ ] limpiar comentarios y ficheros obsoletos
+- [ ] rehacer el README.md ¿usando IA?
+
+### importante
+
+- [ ] [ampliar y mejorar el uso de la extensión TODOs](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
+- [ ] no usar "root" en docker
+- [ ] poner "starship" en bash del docker
+- [ ] probar a subir la imagen resultante en el repositorio ... y usarla desde ahí
+  - [ ] NEXUS (interno)
+  - [ ] DOCKERHUB
+  - [ ] GITHUB PACKAGES
+
+### algún día
+
+- [ ] [Colorls](https://github.com/athityakumar/colorls)
+- [ ] [fzf](https://github.com/junegunn/fzf)
+- [ ] [thefuck](https://github.com/nvbn/thefuck)
 
 ## General Requirements
 
@@ -58,9 +59,7 @@ To use this template out of the box, you will need on your local machine the fol
 - Docker and Docker Desktop (or equivalent)
 - Docker Hub account
 
-A step-by-step guide for setting the above prerequisites is available here:
-
-https://github.com/RamiKrispin/vscode-python/tree/main#prerequisites
+A step-by-step guide for setting the above prerequisites is available [https://github.com/RamiKrispin/vscode-python/tree/main#prerequisites](https://github.com/RamiKrispin/vscode-python/tree/main#prerequisites)
 
 ## Clone the Template
 
@@ -151,14 +150,16 @@ The template was created to enable seamless customization and modification of th
     ]
 }
 ```
- **Note:** The default docker settings are available under the [docker]() folder
+
+**Note:** The default docker settings are available under the `docker` folder
 
 The `devcontainer.json` main arguments:
+
 - `name` - defines the project name
 - `image` - defines the image name to use during the container run time
 - `customizations` - enables the modification of the VScode setting for the container and isolates it from the default settings. In this case, using the following two sub-arguments:
-    - `settings` - to set the Python extension default interpreter
-    - `extensions` to define the list of extensions to install upon the launch of the container
+  - `settings` - to set the Python extension default interpreter
+  - `extensions` to define the list of extensions to install upon the launch of the container
 - `mounts` - optional (commented), enables to mount additional folders from the local file system in addition to the project root folder
 - `remoteEnv` - set environment variables for the environment
 - `runArgs` - passes arguments to the container during the run time
@@ -166,6 +167,7 @@ The `devcontainer.json` main arguments:
 ## Features
 
 This template contains the following CLI tools:
+
 - [Zsh](https://www.zsh.org/) and [Oh-My-Zsh](https://ohmyz.sh/) setting
 - Mount local zsh history
 - Zsh syntax [highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
@@ -173,7 +175,6 @@ This template contains the following CLI tools:
 - [fzf](https://github.com/junegunn/fzf)
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - [thefuck](https://github.com/nvbn/thefuck)
-
 
 ## Requirements
 
@@ -185,25 +186,26 @@ The `devcontainer.json` use the mount argument to mount the local zsh history fi
     ]
 ```
 
-Where the source and target arguments map the local `.zsh_history` file path to the one in the container. 
+Where the source and target arguments map the local `.zsh_history` file path to the one in the container.
 
-Note: to prevent the `.zsh_history` file from getting corrupted by writing simultaneously from both the container and locally, I created a copy of my local `.zsh_history` file and labeled it as `.zsh_history_dev`. 
+Note: to prevent the `.zsh_history` file from getting corrupted by writing simultaneously from both the container and locally, I created a copy of my local `.zsh_history` file and labeled it as `.zsh_history_dev`.
 
 ## Customization
 
 By default, this template is using  it uses this [image](https://hub.docker.com/repository/docker/pacoalcaide/python-dev/tags/arm64.0.0.1/sha256-8d157d1f3218c1f5f76889f739b7eacea5dfcf185e0860eefa016fac8474eacf), which was set as an example. The docker folder contains a Docker workflow template that enables you to set the following:
+
 - Python version
 - Required libraries
 - Install Quarto and define version
 - Define the image labels and tags
 
-You can modify the Python, Ruff and Quarto versions, virtual environment name, and the image tags by modify the `python_ver`, `ruff_ver`, `quarto_ver`, `venv_name, `image_label`, and `image_tag` variables in the `build_docker.sh` bash script and run:
+You can modify the Python, Ruff and Quarto versions, virtual environment name, and the image tags by modify the `python_ver`, `ruff_ver`, `quarto_ver`, `venv_name,`image_label`, and`image_tag` variables in the `build_docker.sh` bash script and run:
+
 ``` shell
 bash build_docker.sh
 ```
 
 To modify the installed libraries, update the `requirements.txt` file.
-
 
 ## License
 
