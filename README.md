@@ -33,6 +33,8 @@ See also:
 - [ ] probar a crear un proyecto nuevo desde la plantilla GitHub
 - [ ] limpiar comentarios y ficheros obsoletos
 - [ ] rehacer el README.md ¿usando IA?
+  - [ ] incluir info de [como usar](https://theaiops.substack.com/p/from-zero-to-a-dockerized-development) la plantilla desde GITHUB
+  - [ ] OJO con lo de copiar los certificados de `.devcaontainer/docker/settings/base/certificates/*` (necesario internamente)
 
 ### importante
 
