@@ -1,8 +1,32 @@
+# Tareas pendientes
+
+## obligatorio
+
+- [x] quitar ZSH
+- [x] limpiar algunas "extensions" de vscode
+- [ ] coger la info de ".env" para crear el docker de devcontainer
+  - [x] cargar desde .env la info en devcontainer.json
+  - [x] montar con docker-compose.yml
+  - [ ] unificar en un solo dockerfile la creación de las 2 imágenes (base y dev)
+- [ ] limpiar comentarios y ficheros obsoletos
+
+## importante
+
+- [ ] [ampliar y mejorar el uso de la extensión TODOs](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
+- [ ] no usar "root" en docker
+- [ ] poner "starship" en bash del docker
+
+## algún día
+
+- [ ] [Colorls](https://github.com/athityakumar/colorls)
+- [ ] [fzf](https://github.com/junegunn/fzf)
+- [ ] [thefuck](https://github.com/nvbn/thefuck)
+
 # A Dockerized Python Development Environment Template
 
 This repository provides a template for a dockerized Python development environment with VScode and the Dev Containers extension. It uses [UV](https://docs.astral.sh/uv/) to set the Python virtual environment. This template includes the following features:
 
-- Python 3.11
+- Python -3.11- 3.12
 - Virtual environment
 - Dev Containers settings
 - Quarto
@@ -140,9 +164,6 @@ This template contains the following CLI tools:
 - Mount local zsh history
 - Zsh syntax [highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 - [Colorls](https://github.com/athityakumar/colorls)
-
-
-TODO
 - [fzf](https://github.com/junegunn/fzf)
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - [thefuck](https://github.com/nvbn/thefuck)
