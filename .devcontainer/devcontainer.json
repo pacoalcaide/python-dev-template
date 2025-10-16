@@ -1,7 +1,7 @@
 {
     //"initializeCommand": "bash ${localWorkspaceFolder}/.devcontainer/load-env.sh", // cargar variables de entorno en el pc host
     
-    "name": "python-dev",
+    "name": "python-dev-template",
     "dockerComposeFile": [
         "docker-compose.yml"
     ],
