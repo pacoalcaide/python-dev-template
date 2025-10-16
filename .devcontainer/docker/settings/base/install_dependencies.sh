@@ -13,11 +13,12 @@ apt-get update -qq && apt-get install -qq -y --no-install-recommends \
    build-essential \
    apt-utils \
    locales \
-   btop \
-   bat \
    unzip \
    software-properties-common \
    && rm -rf /var/lib/apt/lists/*
+
+   #btop \
+   #bat \
 
    #zsh \
    #ruby-full \

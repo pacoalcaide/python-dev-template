@@ -4,17 +4,23 @@
 
 - [x] quitar ZSH
 - [x] limpiar algunas "extensions" de vscode
-- [ ] coger la info de ".env" para crear el docker de devcontainer
+- [x] coger la info de ".env" para crear el docker de devcontainer
   - [x] cargar desde .env la info en devcontainer.json
   - [x] montar con docker-compose.yml
-  - [ ] unificar en un solo dockerfile la creación de las 2 imágenes (base y dev)
+  - [x] unificar en un solo dockerfile la creación de las 2 imágenes (base y dev)
+- [ ] probar a crear un proyecto nuevo desde la plantilla GitHub
 - [ ] limpiar comentarios y ficheros obsoletos
+- [ ] rehacer el README.md ¿usando IA?
 
 ## importante
 
 - [ ] [ampliar y mejorar el uso de la extensión TODOs](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
 - [ ] no usar "root" en docker
 - [ ] poner "starship" en bash del docker
+- [ ] probar a subir la imagen resultante en el repositorio ... y usarla desde ahí 
+  - [ ] NEXUS (interno)
+  - [ ] DOCKERHUB
+  - [ ] GITHUB PACKAGES
 
 ## algún día
 
