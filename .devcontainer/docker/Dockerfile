@@ -1,10 +1,11 @@
 # =================================================================
-# ETAPA 1: BUILD BASE (Equivalente a Dockerfile_Base)
+# ETAPA 1: BUILD BASE
 # =================================================================
 
 # en el docker compose superior se define el valor por defecto para que nunca venga vacío
+# tiene que venir relleno y no vacio, y sino devuelve error el dockerfile
 ARG IMG_ORG
-FROM ${IMG_ORG} AS base
+FROM ${IMG_ORG:?error} AS base 
 
 # Arguments
 ARG QUARTO_VER
@@ -28,14 +29,13 @@ COPY docker/settings/base/*.sh settings/base
 RUN bash ./settings/base/install_dependencies.sh
 
 # Install Quarto
-#RUN bash -c "set -ex && ./settings/base/install_quarto.sh $QUARTO_VER"
 RUN bash ./settings/base/install_quarto.sh $QUARTO_VER
 
 # Set git settings
 RUN bash ./settings/base/setting_git.sh $USER_NAME $USER_EMAIL
 
 # =================================================================
-# ETAPA 2: BUILD DEV (Equivalente a Dockerfile_Dev)
+# ETAPA 2: BUILD DEV 
 # =================================================================
 
 # La imagen base es la etapa construida anteriormente ("base")

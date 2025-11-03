@@ -30,7 +30,7 @@ See also:
   - [x] cargar desde .env la info en devcontainer.json
   - [x] montar con docker-compose.yml
   - [x] unificar en un solo dockerfile la creación de las 2 imágenes (base y dev)
-- [ ] probar a crear un proyecto nuevo desde la plantilla GitHub
+- [x] probar a crear un proyecto nuevo desde la plantilla GitHub
 - [ ] limpiar comentarios y ficheros obsoletos
 - [ ] rehacer el README.md ¿usando IA?
   - [ ] incluir info de [como usar](https://theaiops.substack.com/p/from-zero-to-a-dockerized-development) la plantilla desde GITHUB

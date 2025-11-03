@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile
       args:
-        - IMG_ORG=${IMAGE_ORIGEN:-ubuntu:24.04}
+        - IMG_ORG=${IMAGE_ORIGEN:?error} # tiene que venir relleno y no vacio (cargado con .env) y sino devuelve error el docker-compose
         - QUARTO_VER=${QUARTO_VERSION}
         - USER_NAME=${USER_NAME}
         - USER_EMAIL=${USER_EMAIL}
@@ -18,5 +18,3 @@ services:
       - ..:/workspace
     command: sleep infinity
     working_dir: /workspace
-    # ports:
-    #   - "8888:8888"
